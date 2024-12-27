@@ -89,10 +89,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "2049b076eaec30c695d76623c8a40b482c4bde8451d655ddef506d051522eb53"
+      sha256: "2fd11229f59e23e967b0775df8d5948a519cd7e1e8b6e849729e010587b46539"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "14.6.2"
   http:
     dependency: "direct main"
     description:
@@ -284,4 +284,4 @@ packages:
     version: "1.1.0"
 sdks:
   dart: ">=3.5.0 <4.0.0"
-  flutter: ">=3.18.0-18.0.pre.54"
+  flutter: ">=3.19.0"

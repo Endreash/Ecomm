@@ -1,22 +1,15 @@
-import 'package:ecomm/src/features/items_list/home_page.dart';
+import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+// import 'package:go_router/go_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final goRouter = GoRouter(
-      initialLocation: '/',
-      debugLogDiagnostics: true,
-      routes: [
-        GoRoute(
-          path: '/',
-          builder: (context, state) => const HomePage(),
-        )
-    ]);
     return MaterialApp.router(
+      // routerDelegate: goRouter.routerDelegate,
+      // routeInformationParser: goRouter.routeInformationParser,
       routerConfig: goRouter,
       debugShowCheckedModeBanner: false,
       restorationScopeId: 'app', // ??

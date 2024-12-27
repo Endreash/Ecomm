@@ -22,7 +22,8 @@ void main() async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     // remove the '#' from chrome url in web
-    GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
+    // GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
+    GoRouter.optionURLReflectsImperativeAPIs == true;
     // * Entry point of the app
     runApp(const MyApp());
 

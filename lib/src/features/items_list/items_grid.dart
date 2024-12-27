@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:ecomm/src/constants/test_items.dart';
 // import 'package:ecomm/src/features/item_page/item_page.dart';
 import 'package:ecomm/src/features/items_list/item_card.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ItemsGrid extends StatelessWidget {
   const ItemsGrid({super.key});
@@ -24,12 +26,11 @@ class ItemsGrid extends StatelessWidget {
             itemBuilder: (_, index) {
               final item = items[index];
               return ItemCard(
-                item
-                // onPressed: () => Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (_) => ItemPage(item),
-                //   ),
-                // ),
+                item,
+                () => context.goNamed(
+                  AppRoute.item.name,
+                  pathParameters: {'id':item.id},
+                )
               );
             },
           );

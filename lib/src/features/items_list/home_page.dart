@@ -3,13 +3,15 @@
 // import 'package:ecomm/src/features/items_list/discount_sale_container.dart';
 import 'package:ecomm/src/features/items_list/items_grid.dart';
 import 'package:ecomm/src/features/items_list/items_search.dart';
+import 'package:ecomm/src/routing/app_route.dart';
 // import 'package:ecomm/src/models/cart.dart';
 // import 'package:ecomm/src/models/item_model.dart';
-import 'package:ecomm/src/pages/cart_page.dart';
+// import 'package:ecomm/src/pages/cart_page.dart';
 // import 'package:ecomm/src/features/items_list/item_card.dart';
 // import 'package:ecomm/src/util/category_slide.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -56,13 +58,8 @@ class _HomePageState extends State<HomePage> {
           centerTitle: false,
           actions: [
             MaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CartPage(),
-                    ));
-              },
+              // onPressed: () => GoRouter.of(context).go('/cart'),
+              onPressed: () => context.pushNamed(AppRoute.cart.name), // using pushNamed so that it can go back to the previous stack not to '/'
               child: const Icon(Icons.shopping_bag_outlined),
             )
           ],

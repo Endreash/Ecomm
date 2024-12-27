@@ -15,6 +15,17 @@ class ItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          MaterialButton(
+            onPressed: () {},
+            child: const Icon(Icons.favorite_border),
+          ),
+        ],
+      ),
       body: item == null
           ?
           //TODO: Empty Placeholder Widget
@@ -49,20 +60,22 @@ class ItemPage extends StatefulWidget {
 class _ItemPageState extends State<ItemPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          MaterialButton(
-            onPressed: () {},
-            child: const Icon(Icons.favorite_border),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
+    return 
+    // Scaffold(
+    //   extendBodyBehindAppBar: true,
+    //   appBar: AppBar(
+    //     backgroundColor: Colors.transparent,
+    //     elevation: 0,
+    //     actions: [
+    //       MaterialButton(
+    //         onPressed: () {},
+    //         child: const Icon(Icons.favorite_border),
+    //       ),
+    //     ],
+    //   ),
+    //   body: 
+      SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             // Container(
@@ -135,7 +148,7 @@ class _ItemPageState extends State<ItemPage> {
             )
           ],
         ),
-      ),
-    );
+      );
+    // );
   }
 }

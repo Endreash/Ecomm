@@ -1,17 +1,10 @@
 import 'package:ecomm/src/models/item_model.dart';
-import 'package:ecomm/src/features/item_page/item_page.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
-  // final String itemName;
-  // final String itemPrice;
-  // final String itemRating;
-  // final String itemImage;
-  // const ItemCard(this.itemName, this.itemPrice, this.itemRating, this.itemImage, {super.key});
   const ItemCard(this.item, this.onPressed, {super.key});
   final Item item;
   final Function()? onPressed;
-
 
   @override
   Widget build(BuildContext context) {

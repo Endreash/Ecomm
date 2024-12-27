@@ -20,7 +20,7 @@ List<Item> itemShop = [
       rating: '4.7',
       imagePath: 'assets/iPhone13.png'),
   Item(
-      id: '3',
+      id: '4',
       name: 'iPhone 13 pro max',
       price: '599.0',
       rating: '4.7',

@@ -8,8 +8,8 @@ class Item {
     required this.price,
     required this.rating,
     required this.imagePath,
-    // required this.description
-    // required this.availableQuantity,
+    required this.description,
+    required this.availableQuantity,
     // this.avgRating = 0,
     // this.numRatings = 0,
   });
@@ -18,8 +18,8 @@ class Item {
   final String price; // turn to double
   final String rating;
   final String imagePath;
-  // final String description;
-  // final int availableQuantity;
+  final String description;
+  final int availableQuantity;
   // final double avgRating;
   // final int numRatings;
 }

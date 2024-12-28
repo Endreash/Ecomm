@@ -1,14 +1,6 @@
-// import 'package:ecomm/src/constants/test_items.dart';
-// import 'package:ecomm/src/features/items_list/categories_link.dart';
-// import 'package:ecomm/src/features/items_list/discount_sale_container.dart';
-import 'package:ecomm/src/features/items_list/items_grid.dart';
-import 'package:ecomm/src/features/items_list/items_search.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/items_grid.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/items_search.dart';
 import 'package:ecomm/src/routing/app_route.dart';
-// import 'package:ecomm/src/models/cart.dart';
-// import 'package:ecomm/src/models/item_model.dart';
-// import 'package:ecomm/src/pages/cart_page.dart';
-// import 'package:ecomm/src/features/items_list/item_card.dart';
-// import 'package:ecomm/src/util/category_slide.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,10 +13,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // * Use a [ScrollController] to register a listener that dismisses the
-  // * on-screen keyboard when the user scrolls.
-  // * This is needed because this page has a search field that the user can
-  // * type into.
+  // Use a [ScrollController] to register a listener that dismisses the
+  // on-screen keyboard when the user scrolls.
+  // This is needed because this page has a search field that the user can type into.
   final _scrollController = ScrollController();
 
   @override
@@ -49,12 +40,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // var items = itemShop;
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.grey,
-          title: const Text('Discover'),
+          backgroundColor: Colors.transparent,
+          title: const Text('Discover', style: TextStyle(
+            color: Colors.grey
+          ),),
           centerTitle: false,
           actions: [
             MaterialButton(
@@ -65,7 +57,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         backgroundColor: Colors.white,
-
         body: CustomScrollView(
           controller: _scrollController,
           slivers: const [
@@ -76,17 +67,6 @@ class _HomePageState extends State<HomePage> {
             ResponsiveSliverCenter(
               padding: EdgeInsets.all(16),
               child: ItemsGrid())
-            // ListView.builder(
-            //     shrinkWrap: true,
-            //     physics: const NeverScrollableScrollPhysics(),
-            //     scrollDirection: Axis.vertical,
-            //     itemCount: items.length,
-            //     itemBuilder: (context, index) {
-            //       Item item = items[index];
-            //       return ItemCard(item
-            //           // items[index][0], items[index][1], items[index][2], items[index][3]
-            //           );
-            //     })
           ]),
         );
   }

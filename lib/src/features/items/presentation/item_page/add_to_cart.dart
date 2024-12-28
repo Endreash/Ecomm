@@ -1,7 +1,9 @@
+import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
 
 class AddToCart extends StatefulWidget {
-  const AddToCart({super.key});
+  const AddToCart({super.key, required this.item});
+  final Item item;
 
   @override
   State<AddToCart> createState() => _AddToCartState();
@@ -23,7 +25,7 @@ class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
     return 
-      // const SizedBox(width: 30),
+      // TODO: available quantity
       GestureDetector(
         onTap: () => addItemToCart(),
         child: Container(

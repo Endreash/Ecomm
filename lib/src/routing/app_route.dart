@@ -1,6 +1,6 @@
-import 'package:ecomm/src/features/item_page/item_page.dart';
-import 'package:ecomm/src/features/items_list/home_page.dart';
-import 'package:ecomm/src/features/shopping_cart/cart_page.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/home_page.dart';
+import 'package:ecomm/src/features/items/presentation/item_page/item_page.dart';
+import 'package:ecomm/src/features/cart/presentation/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

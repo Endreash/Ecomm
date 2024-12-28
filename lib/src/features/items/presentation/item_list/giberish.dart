@@ -1,5 +1,5 @@
-import 'package:ecomm/src/features/items_list/discount_sale_container.dart';
-import 'package:ecomm/src/features/items_list/category_slide.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/category_slide.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/discount_sale_container.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
 

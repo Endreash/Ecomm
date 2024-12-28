@@ -1,4 +1,4 @@
-import 'package:ecomm/src/models/item_model.dart';
+import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {

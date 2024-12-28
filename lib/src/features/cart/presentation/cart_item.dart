@@ -1,7 +1,5 @@
-// import 'package:ecomm/src/models/cart.dart';
-import 'package:ecomm/src/models/item_model.dart';
+import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
 
 class CartItem extends StatefulWidget {
   final Item item;

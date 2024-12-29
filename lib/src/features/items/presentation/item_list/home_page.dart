@@ -1,3 +1,5 @@
+import 'package:ecomm/src/features/items/presentation/item_list/cart_icon.dart';
+import 'package:ecomm/src/features/items/presentation/item_list/discount_sale_container.dart';
 import 'package:ecomm/src/features/items/presentation/item_list/items_grid.dart';
 import 'package:ecomm/src/features/items/presentation/item_list/items_search.dart';
 import 'package:ecomm/src/routing/app_route.dart';
@@ -50,9 +52,15 @@ class _HomePageState extends State<HomePage> {
           centerTitle: false,
           actions: [
             MaterialButton(
+              splashColor: Colors.transparent, // Remove splash effect
+              highlightColor: Colors.transparent, // Remove highlight effect
+              hoverColor: Colors.transparent, // Remove hover effect
+              // color: Colors.white, // Background color
+              // textColor: Colors.grey, // Text color
               // onPressed: () => GoRouter.of(context).go('/cart'),
               onPressed: () => context.pushNamed(AppRoute.cart.name), // using pushNamed so that it can go back to the previous stack not to '/'
-              child: const Icon(Icons.shopping_bag_outlined),
+              // child: const Icon(Icons.shopping_bag_outlined),
+              child: const CartIcon(),
             )
           ],
         ),
@@ -63,9 +71,14 @@ class _HomePageState extends State<HomePage> {
             ResponsiveSliverCenter(
               padding: EdgeInsets.all(16),
               child: SearchItems()),
+
+            ResponsiveSliverCenter(child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: DiscountSaleContainer(),
+            )),
         
             ResponsiveSliverCenter(
-              padding: EdgeInsets.all(16),
+              // padding: EdgeInsets.all(16),
               child: ItemsGrid())
           ]),
         );

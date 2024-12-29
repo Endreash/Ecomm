@@ -5,9 +5,12 @@ import 'package:ecomm/src/features/items/presentation/item_page/add_to_cart.dart
 import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_buttons.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
+import 'package:ecomm/src/routing/app_route.dart';
+import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({super.key, required this.itemID});
@@ -19,15 +22,34 @@ class ItemScreen extends StatelessWidget {
   Widget build(BuildContext context) { 
     // final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          MaterialButton(
-            onPressed: () {},
-            child: const Icon(Icons.favorite_border),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ClipOval(
+            child: Material(
+              color: Colors.transparent, // Background color
+              child: IconButton(
+                icon: Icon(Icons.arrow_back, color: Colors.grey[800]), // Icon
+                onPressed: () => context.goNamed(AppRoute.home.name)
+                // splashColor: Colors.blue.shade200, // Splash color
+                // highlightColor: Colors.blue.shade300, // Highlight color
+              ),
+            ),
           ),
+        ),
+        actions: const [
+          // MaterialButton(
+          //   onPressed: () {},
+          //   child: const Icon(Icons.favorite_border),
+          // ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: FavoriteButton(),
+          )
         ],
       ),
       body: Consumer( // only this builder will called again if the value returned by this provider (itemsRepositoryProvider) changes

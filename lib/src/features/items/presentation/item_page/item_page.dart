@@ -1,4 +1,5 @@
-import 'package:ecomm/src/constants/test_items.dart';
+// import 'package:ecomm/src/constants/test_items.dart';
+import 'package:ecomm/src/features/items/data/items_repository.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/add_to_cart.dart';
 // import 'package:ecomm/src/features/item_page/item_image.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_buttons.dart';
@@ -6,14 +7,17 @@ import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.d
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({super.key, required this.itemID});
   final String itemID;
 
+// used the Consumer rather than ConsumerWidget which rebuilds every thing in the build method
+// if the the provider value changes
   @override
-  Widget build(BuildContext context) {
-    final item = itemShop.firstWhere((item) => item.id == itemID);
+  Widget build(BuildContext context) { 
+    // final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -26,25 +30,31 @@ class ItemScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: item == null
-          ?
-          //TODO: Empty Placeholder Widget
-          const Center(
-              child: Text(
-                'Item not found',
-              ),
-            )
-          : CustomScrollView(
-              slivers: [
-                ResponsiveSliverCenter(
-                  padding: const EdgeInsets.all(16),
-                  child: ItemPage(
-                    item: item,
+      body: Consumer( // only this builder will called again if the value returned by this provider (itemsRepositoryProvider) changes
+        builder: (context, ref, child) {
+          final itemsRepository = ref.watch(itemsRepositoryProvider);
+          final item = itemsRepository.getItem(itemID);
+          return item == null
+              ?
+              //TODO: Empty Placeholder Widget
+              const Center(
+                  child: Text(
+                    'Item not found',
                   ),
-                ),
-                // TODO Item Reviews List(itemId: itemId),
-              ],
-            ),
+                )
+              : CustomScrollView(
+                  slivers: [
+                    ResponsiveSliverCenter(
+                      padding: const EdgeInsets.all(16),
+                      child: ItemPage(
+                        item: item,
+                      ),
+                    ),
+                    // TODO Item Reviews List(itemId: itemId),
+                  ],
+                );
+        },
+      ),
     );
   }
 }

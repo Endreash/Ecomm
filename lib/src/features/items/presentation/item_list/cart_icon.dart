@@ -16,7 +16,7 @@ class CartIcon extends StatelessWidget {
       children: [
         Center(
           child: IconButton(
-            iconSize: 18, 
+            iconSize: 19, 
             key: cartIconKey,
             icon: const Icon(Icons.shopping_bag_outlined),
             onPressed: () => context.pushNamed(AppRoute.cart.name),
@@ -41,8 +41,8 @@ class CartIconBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 14,
-      height: 14,
+      width: 16,
+      height: 16,
       child: DecoratedBox(
         decoration: const BoxDecoration(
           color: Colors.green,

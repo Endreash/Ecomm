@@ -32,7 +32,7 @@ class _AddToCartState extends State<AddToCart> {
           height: 64,
           width: 220,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24), color: Colors.green),
+              borderRadius: BorderRadius.circular(24), color: const Color.fromRGBO(91, 192, 109, 5)),
           child: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(

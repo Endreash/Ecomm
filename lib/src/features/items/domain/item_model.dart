@@ -10,6 +10,7 @@ class Item {
     required this.imagePath,
     required this.description,
     required this.availableQuantity,
+    this.isOnSale,
     // this.avgRating = 0,
     // this.numRatings = 0,
   });
@@ -20,6 +21,7 @@ class Item {
   final String imagePath;
   final String description;
   final int availableQuantity;
+  final bool ?isOnSale;
   // final double avgRating;
   // final int numRatings;
 }

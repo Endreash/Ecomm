@@ -1,4 +1,4 @@
-import 'package:ecomm/src/features/cart/presentation/item_quantity_selector.dart';
+// import 'package:ecomm/src/features/cart/presentation/item_quantity_selector.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
 
@@ -63,8 +63,8 @@ class CartCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    // crossAxisAlignment: CrossAxisAlignment.stretch,
-                    // mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(item.name,
                       style: const TextStyle(
@@ -77,56 +77,50 @@ class CartCard extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),),
                   const SizedBox(height: 8,),
-                  const Row(
+                  Row(
                     // mainAxisAlignment: MainAxisAlignment.end,
                     // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         '\$650.00',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 22, fontWeight: FontWeight.w500),
                       ),
-                      // const SizedBox(width: 32,),
-                      const ItemQuantitySelector(quantity: 5)
-                      // Row(
-                      //               children: [
-                      //     GestureDetector(
-                      //       onTap: () {
-                      //         // setQuantity(false);
-                      //         print(_quantity);
-                      //       },
-                      //       child: const Icon(
-                      //         Icons.remove,
-                      //         color: Colors.blueAccent,
-                      //         size: 36.0,
-                      //       ),
-                      //     ),
-                      //     const SizedBox(
-                      //       width: 12,
-                      //     ),
-                      //     Text(
-                      //       _quantity.toString(),
-                      //     ),
-                      //     // Text('aa'),
-                      //     const SizedBox(
-                      //       width: 12,
-                      //     ),
-                      //     GestureDetector(
-                      //         onTap: () {
-                      //           // setQuantity(true);
-                      //           print(_quantity);
-                      //         },
-                      //         child: const Icon(
-                      //           Icons.add,
-                      //           color: Colors.blueAccent,
-                      //           size: 36.0,
-                      //         )),
-                      //     const SizedBox(width: 64),
-                      //     Text(
-                      //       "${setTotal().toString()} ETB",
-                      //     )
-                      //   ],
-                      // ),
+                      const SizedBox(width: 32,),
+                      // ItemQuantitySelector(quantity: 5)
+                      Row(
+                        children: [
+                        GestureDetector(
+                          onTap: () {
+                            // setQuantity(false);
+                            print(_quantity);
+                          },
+                          child: const Icon(
+                            Icons.remove,
+                            color: Colors.blueAccent,
+                            size: 36.0,
+                          ),
+                        ),
+                        const SizedBox(width: 12,),
+                        Text(_quantity.toString(),),
+                        // Text('aa'),
+                        const SizedBox(width: 12,),
+                        GestureDetector(
+                          onTap: () {
+                            // setQuantity(true);
+                            print(_quantity);
+                          },
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.blueAccent,
+                            size: 36.0,
+                          )),
+                        const SizedBox(width: 64),
+                        Text(
+                          "${setTotal().toString()} ETB",
+                        )
+                        ],
+                      ),
                     ],
                   )
                 ],

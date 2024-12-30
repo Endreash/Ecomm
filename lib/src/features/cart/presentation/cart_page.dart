@@ -85,7 +85,12 @@ class CartPage extends StatelessWidget {
                           })),
                        const Flexible(flex: 1, child: Padding(
                          padding: EdgeInsets.all(16.0),
-                         child: PromoCode(),
+                         child: Column(
+                           children: [
+                             PromoCode(),
+                             
+                           ],
+                         ),
                        ))
                 ],
               ),

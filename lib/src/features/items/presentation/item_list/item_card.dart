@@ -55,13 +55,14 @@ class ItemCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           const Icon(
+                            size: 18,
                             Icons.star,
                             color: Colors.amber,
                           ),
                           Text(
                             item.rating,
                             style: const TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 18),
+                                fontWeight: FontWeight.w500, fontSize: 16),
                           )
                         ],
                       )

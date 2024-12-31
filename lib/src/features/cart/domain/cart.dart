@@ -1,8 +1,26 @@
 import 'package:ecomm/src/constants/test_items.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
-import 'package:flutter/material.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:uuid/uuid.dart';
+import 'package:uuid/v4.dart';
 
-class Cart extends ChangeNotifier{
+const _uuid= Uuid();
+
+class Cart {
+  const Cart({
+    required this.itemName,
+    required this.id,
+  });
+
+  final String id;
+  final String itemName;
+
+  @override
+  String toString() {
+    return 'Cart(description: $itemName, completed: $id)';
+  }
+}
+class CartList extends Notifier<List<Cart>>{
   // list of shoes for sale
   // List<Item> itemShop = [
   //   Item(
@@ -27,6 +45,21 @@ class Cart extends ChangeNotifier{
   //       rating: '4.7',
   //       imagePath: 'assets/iPhone13.png'),
   // ];
+  @override
+  List<Cart> build() => [
+        const Cart(id: 'item-0', itemName: 'Airpods')
+  ];
+
+  void add(String itemName) {
+    state = [
+      ...state,
+      Cart(itemName: itemName, id: _uuid.v4())
+    ];
+  }
+
+  void remove(Cart target) {
+    state = state.where((cart) => cart.id != target.id).toList();
+  }
 
   var items = itemShop;
 
@@ -35,7 +68,7 @@ class Cart extends ChangeNotifier{
 
   //get list of itemsfor sale
   List<Item> getItemList() {
-    return itemShop;
+    return userCart;
   }
 
   // get cart
@@ -46,11 +79,11 @@ class Cart extends ChangeNotifier{
   // add item to cart
   void addItemToCart(Item item) {
     userCart.add(item);
-    notifyListeners();
+    // notifyListeners();
   }
 
   void removeItemFromCart(Item item) {
     userCart.remove(item);
-    notifyListeners();
+    // notifyListeners();
   }
 }

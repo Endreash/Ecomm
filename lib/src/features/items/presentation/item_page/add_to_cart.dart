@@ -14,6 +14,7 @@ class _AddToCartState extends State<AddToCart> {
   void addItemToCart() {
     // print('Eww! dont touch me');
     // Provider.of<Cart>(context, listen: false).addItemToCart(widget.item);
+    
     showDialog(
         context: context,
         builder: (context) => const AlertDialog(

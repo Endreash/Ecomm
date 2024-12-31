@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dark_theme.dart';
 import 'light_theme.dart';
+
+final themeProvider = ChangeNotifierProvider((ref) => ThemeProvider());
 
 class ThemeProvider extends ChangeNotifier {
   // initially, light mode

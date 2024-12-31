@@ -6,6 +6,7 @@ import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/routing/app_route.dart';
+import 'package:ecomm/src/theme/app_theme.dart';
 import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class ItemScreen extends StatelessWidget {
     // final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
       backgroundColor: Colors.white,
+      // backgroundColor: AppTheme.,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,

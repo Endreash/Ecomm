@@ -28,10 +28,19 @@ class CartCard extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    const size = 150.0;
+    final padding = (MediaQuery.of(context).size.width - size) / 2;
+
+    final sizee = MediaQuery.sizeOf(context);
+
+    print(sizee);
+    print(padding);
     final screenWidth = MediaQuery.of(context).size.width;
     double baseWidth = 408;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+    print(screenWidth);
+    print(fem);
 
     return Container(
       // height: 100,

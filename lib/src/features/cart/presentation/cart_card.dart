@@ -1,8 +1,10 @@
 // import 'package:ecomm/src/features/cart/presentation/item_quantity_selector.dart';
+import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CartCard extends StatelessWidget {
+class CartCard extends ConsumerWidget {
   CartCard(this.item, {super.key});
   final Item item;
 
@@ -27,25 +29,27 @@ class CartCard extends StatelessWidget {
   }
   
   @override
-  Widget build(BuildContext context) {
-    const size = 150.0;
-    final padding = (MediaQuery.of(context).size.width - size) / 2;
+  Widget build(BuildContext context, WidgetRef ref) {
+    // const size = 150.0;
+    // final padding = (MediaQuery.of(context).size.width - size) / 2;
 
-    final sizee = MediaQuery.sizeOf(context);
+    // final sizee = MediaQuery.sizeOf(context);
 
-    print(sizee);
-    print(padding);
-    final screenWidth = MediaQuery.of(context).size.width;
-    double baseWidth = 408;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
-    print(screenWidth);
-    print(fem);
+    // print(sizee);
+    // print(padding);
+    // final screenWidth = MediaQuery.of(context).size.width;
+    // double baseWidth = 408;
+    // double fem = MediaQuery.of(context).size.width / baseWidth;
+    // double ffem = fem * 0.97;
+    // print(screenWidth);
+    // print(fem);
+
+    final cart = ref.watch(cartProvider);
 
     return Container(
       // height: 100,
       // width: screenWidth,
-      width: 368*fem,
+      // width: 368*fem,
 
       color: Colors.white,
       child: Padding(
@@ -124,10 +128,10 @@ class CartCard extends StatelessWidget {
                             color: Colors.blueAccent,
                             size: 36.0,
                           )),
-                        const SizedBox(width: 64),
-                        Text(
-                          "${setTotal().toString()} ETB",
-                        )
+                        // const SizedBox(width: 64),
+                        // Text(
+                        //   "${setTotal().toString()} ETB",
+                        // )
                         ],
                       ),
                     ],

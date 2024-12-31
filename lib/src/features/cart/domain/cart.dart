@@ -6,21 +6,28 @@ import 'package:uuid/v4.dart';
 
 const _uuid= Uuid();
 
-class Cart {
-  const Cart({
-    required this.itemName,
-    required this.id,
-  });
+// class Cart {
+//   const Cart({
+//     required this.itemName,
+//     required this.id,
+//   });
 
-  final String id;
-  final String itemName;
+//   final String id;
+//   final String itemName;
 
-  @override
-  String toString() {
-    return 'Cart(description: $itemName, completed: $id)';
-  }
-}
-class CartList extends Notifier<List<Cart>>{
+//   @override
+//   String toString() {
+//     return 'Cart(description: $itemName, completed: $id)';
+//   }
+// }
+
+final cartProvider = StateNotifierProvider<CartNotifier, List<Item>>((ref){
+  return CartNotifier();
+});
+
+class CartNotifier extends StateNotifier<List<Item>>{
+
+// class CartList extends Notifier<List<Cart>>{
   // list of shoes for sale
   // List<Item> itemShop = [
   //   Item(
@@ -45,22 +52,44 @@ class CartList extends Notifier<List<Cart>>{
   //       rating: '4.7',
   //       imagePath: 'assets/iPhone13.png'),
   // ];
-  @override
-  List<Cart> build() => [
-        const Cart(id: 'item-0', itemName: 'Airpods')
-  ];
+  // @override
+  // List<Cart> build() => [
+  //       const Cart(id: 'item-0', itemName: 'Airpods')
+  // ];
 
-  void add(String itemName) {
+  // void add(String itemName) {
+  //   state = [
+  //     ...state,
+  //     Cart(itemName: itemName, id: _uuid.v4())
+  //   ];
+  // }
+
+  // void remove(Cart target) {
+  //   state = state.where((cart) => cart.id != target.id).toList();
+  // }
+
+  CartNotifier() : super([
+      Item(
+      id: '1',
+      name: 'Airpods',
+      price: '132.0',
+      rating: '4.9',
+      imagePath: 'assets/airpod.png',
+      availableQuantity: 5,
+      description:
+          'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
+      ]);
+
+  void add(Item item) {
     state = [
       ...state,
-      Cart(itemName: itemName, id: _uuid.v4())
-    ];
+      // Item(item)
+      ];
   }
 
-  void remove(Cart target) {
-    state = state.where((cart) => cart.id != target.id).toList();
+  void remove(Item target) {
+    state = state.where((item) => item.id != target.id).toList();
   }
-
   var items = itemShop;
 
   // list of items in the user cart

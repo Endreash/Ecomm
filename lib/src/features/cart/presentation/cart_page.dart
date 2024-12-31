@@ -1,47 +1,39 @@
 // import 'package:ecomm/src/models/cart.dart';
 import 'package:ecomm/src/constants/test_items.dart';
+import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/features/cart/presentation/cart_card.dart';
 import 'package:ecomm/src/features/cart/presentation/promo_code.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/features/cart/presentation/cart_item.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends ConsumerWidget {
   const CartPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var item = itemShop;
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    // var item = itemShop;
+    final cart = ref.watch(cartProvider);
 
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipOval(
-            child: Material(
-              color: Colors.transparent, // Background color
-              child: IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.grey[800]), // Icon
-                onPressed: () => context.goNamed(AppRoute.home.name)
-                // splashColor: Colors.blue.shade200, // Splash color
-                // highlightColor: Colors.blue.shade300, // Highlight color
-              ),
-            ),
-          ),
-        ),
-          // leading: Container(
-          //   padding: const EdgeInsets.all(2),
-          //   decoration: BoxDecoration(
-          //     border:
-          //         Border.all(color:const Color.fromARGB(255, 186, 185, 185)),
-          //     borderRadius: const BorderRadius.all(Radius.circular(50)),
-          //   ),
-          //   child: const BackButton(color: Colors.black),
-          //   ),
+            padding: const EdgeInsets.all(8.0),
+            child: ClipOval(
+              child: Material(
+                color: Colors.transparent, // Background color
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.grey[800]), // Icon
+                  onPressed: () => context.goNamed(AppRoute.home.name)
+                  // splashColor: Colors.blue.shade200, // Splash color
+                  // highlightColor: Colors.blue.shade300, // Highlight color
+                ),),),),
           title: Text(
             'My cart',
             style: TextStyle(color: Colors.grey[800], fontSize: 20, fontWeight: FontWeight.w500),
@@ -70,7 +62,7 @@ class CartPage extends StatelessWidget {
         //   padding: const EdgeInsets.all(12),
         //   child: Column(
         //     children: [
-
+        //       ...cart.map((e) => Text(e)).toList()
         //     ],
         //   ),
         //   )
@@ -82,10 +74,10 @@ class CartPage extends StatelessWidget {
                     flex: 3,
                       child: ListView.builder(
                           // itemCount: value.getUserCart().length,
-                          itemCount: item.length,
+                          itemCount: cart.length,
                           itemBuilder: (context, index) {
                             // get individual item
-                            Item individualItem = item[index];
+                            Item individualItem = cart[index];
                             // final item = itemShop;
                             //return the cart item
                             // return CartItem(individualItem);

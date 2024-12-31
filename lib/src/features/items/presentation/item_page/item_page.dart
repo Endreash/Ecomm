@@ -1,4 +1,5 @@
 // import 'package:ecomm/src/constants/test_items.dart';
+import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/features/items/data/items_repository.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/add_to_cart.dart';
 // import 'package:ecomm/src/features/item_page/item_image.dart';
@@ -6,21 +7,22 @@ import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/routing/app_route.dart';
-import 'package:ecomm/src/theme/app_theme.dart';
+// import 'package:ecomm/src/theme/app_theme.dart';
 import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class ItemScreen extends StatelessWidget {
+class ItemScreen extends ConsumerWidget {
   const ItemScreen({super.key, required this.itemID});
   final String itemID;
 
 // used the Consumer rather than ConsumerWidget which rebuilds every thing in the build method
 // if the the provider value changes
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context, WidgetRef ref) { 
+    final cart = ref.watch(cartProvider);
     // final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
       backgroundColor: Colors.white,

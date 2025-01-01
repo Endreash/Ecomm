@@ -1,10 +1,7 @@
-// import 'package:ecomm/src/models/cart.dart';
-import 'package:ecomm/src/constants/test_items.dart';
 import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/features/cart/presentation/cart_card.dart';
 import 'package:ecomm/src/features/cart/presentation/promo_code.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
-import 'package:ecomm/src/features/cart/presentation/cart_item.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +13,6 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    // var item = itemShop;
     final cart = ref.watch(cartProvider);
 
     return Scaffold(
@@ -58,14 +54,6 @@ class CartPage extends ConsumerWidget {
           ],
         ),
         body: 
-        // Padding(
-        //   padding: const EdgeInsets.all(12),
-        //   child: Column(
-        //     children: [
-        //       ...cart.map((e) => Text(e)).toList()
-        //     ],
-        //   ),
-        //   )
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(

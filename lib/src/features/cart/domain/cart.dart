@@ -1,33 +1,8 @@
-import 'package:ecomm/src/constants/test_items.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:uuid/uuid.dart';
-import 'package:uuid/v4.dart';
 
 const _uuid= Uuid();
-
-// class Cart {
-//   const Cart({
-//     required this.itemName,
-//     required this.id,
-//   });
-
-//   final String id;
-//   final String itemName;
-
-//   @override
-//   String toString() {
-//     return 'Cart(description: $itemName, completed: $id)';
-//   }
-// }
-
-final cartProvider = StateNotifierProvider<CartNotifier, List<Item>>((ref){
-  return CartNotifier();
-});
-
-class CartNotifier extends StateNotifier<List<Item>>{
-
-// class CartList extends Notifier<List<Cart>>{
   // list of shoes for sale
   // List<Item> itemShop = [
   //   Item(
@@ -56,63 +31,60 @@ class CartNotifier extends StateNotifier<List<Item>>{
   // List<Cart> build() => [
   //       const Cart(id: 'item-0', itemName: 'Airpods')
   // ];
-
-  // void add(String itemName) {
-  //   state = [
-  //     ...state,
-  //     Cart(itemName: itemName, id: _uuid.v4())
-  //   ];
+  // var items = itemShop;
+  // // list of items in the user cart
+  // List<Item> userCart = [];
+  // //get list of itemsfor sale
+  // List<Item> getItemList() {
+  //   return userCart;
+  // }
+  // // get cart
+  // List<Item> getUserCart() {
+  //   return userCart;
+  // }
+  // // add item to cart
+  // void addItemToCart(Item item) {
+  //   userCart.add(item);
+  //   // notifyListeners();
+  // }
+  // void removeItemFromCart(Item item) {
+  //   userCart.remove(item);
+  //   // notifyListeners();
   // }
 
-  // void remove(Cart target) {
-  //   state = state.where((cart) => cart.id != target.id).toList();
-  // }
+class CartNotifier extends StateNotifier<List<Item>>{
 
   CartNotifier() : super([
-      Item(
-      id: '1',
-      name: 'Airpods',
-      price: '132.0',
-      rating: '4.9',
-      imagePath: 'assets/airpod.png',
-      availableQuantity: 5,
-      description:
-          'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
+      // Item(
+      // id: '1',
+      // name: 'Airpods',
+      // price: '132.0',
+      // rating: '4.9',
+      // imagePath: 'assets/airpod.png',
+      // availableQuantity: 5,
+      // description:
+      //     'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
       ]);
 
+  // Update the CartNotifier to correctly add items to the cart
   void add(Item item) {
     state = [
       ...state,
+      item
       // Item(item)
       ];
-  }
+  } // embi yalegn Item item pass saleregew new
 
-  void remove(Item target) {
-    state = state.where((item) => item.id != target.id).toList();
+  void remove(Item itemId) {
+    state = state.where((item) => item.id != itemId.id).toList();
   }
-  var items = itemShop;
-
-  // list of items in the user cart
-  List<Item> userCart = [];
-
-  //get list of itemsfor sale
-  List<Item> getItemList() {
-    return userCart;
-  }
-
-  // get cart
-  List<Item> getUserCart() {
-    return userCart;
-  }
-
-  // add item to cart
-  void addItemToCart(Item item) {
-    userCart.add(item);
-    // notifyListeners();
-  }
-
-  void removeItemFromCart(Item item) {
-    userCart.remove(item);
-    // notifyListeners();
-  }
+  
 }
+
+final cartProvider = StateNotifierProvider<CartNotifier, List<Item>>((ref){
+  return CartNotifier();
+});
+
+final cartItemsCountProvider = Provider<int>((ref) {
+  return ref.watch(cartProvider).length;
+});

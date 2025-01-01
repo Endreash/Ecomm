@@ -17,13 +17,13 @@ class ItemCard extends StatelessWidget {
       child: Center(
         child: Container(
             width: 180,
-            height: 265,
+            height: 225,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),
                 ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,29 +1,28 @@
+import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class CartIcon extends StatelessWidget {
+class CartIcon extends ConsumerWidget {
   const CartIcon({super.key});
 
-   // * Keys for testing using find.byKey()
-  static const cartIconKey = Key('shopping-cart');
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: Read from data source
-    const cartItemsCount = 3;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cartItemsCount = ref.watch(cartItemsCountProvider);
+    // const cartItemsCount = 0;
     return Stack(
       children: [
         Center(
           child: IconButton(
             iconSize: 19, 
-            key: cartIconKey,
             icon: const Icon(Icons.shopping_bag_outlined),
             onPressed: () => context.pushNamed(AppRoute.cart.name),
           ),
         ),
         if (cartItemsCount > 0)
-          const Positioned(
+          Positioned(
             top: 4,
             right: 4,
             child: CartIconBadge(cartItemsCount),

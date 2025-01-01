@@ -7,7 +7,6 @@ import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/routing/app_route.dart';
-// import 'package:ecomm/src/theme/app_theme.dart';
 import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
 import 'package:flutter/material.dart';
@@ -95,18 +94,8 @@ class ItemPage extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          // Container(
-          //   height: 400,
-          //   decoration: BoxDecoration(
-          //       color: Colors.grey[300],
-          //       image: const DecorationImage(
-          //           image: AssetImage('assets/xbox.png'), fit: BoxFit.cover)),
-          // ),
           SizedBox(
             height: 400,
-            // decoration: const BoxDecoration(
-            //   color: Colors.white
-            // ),
             child: Image.asset(
               item.imagePath,
               fit: BoxFit.cover,
@@ -125,6 +114,22 @@ class ItemPage extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    //TODO: implement isOnSale
+                    if(item.price > 500) ... { 
+                      Container(
+                        height: 32,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24), color: Colors.red[400]),
+                        child: const Center(
+                          child: Text(
+                            '% On sale',
+                            style: TextStyle(
+                                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      )
+                    }
                   ],
                 ),
                 const SizedBox(height: 12),
@@ -156,7 +161,8 @@ class ItemPage extends StatelessWidget {
                           //       fontWeight: FontWeight.w500),
                           // )
                           Text(
-                            item.price,
+                            // item.price.toString(),
+                            '\$${item.price}',
                             style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.w500),
                           )

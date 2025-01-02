@@ -1,8 +1,7 @@
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:uuid/uuid.dart';
+// import 'package:uuid/uuid.dart';
 
-const _uuid= Uuid();
   // list of shoes for sale
   // List<Item> itemShop = [
   //   Item(

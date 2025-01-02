@@ -53,7 +53,7 @@ class CartPage extends ConsumerWidget {
             )
           ],
         ),
-        body: 
+        body: //TODO: check if cart is empty
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(

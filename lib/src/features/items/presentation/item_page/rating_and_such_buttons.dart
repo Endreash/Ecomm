@@ -47,11 +47,11 @@ class RatingAndReview extends StatelessWidget {
           )),
       const SizedBox(width: 8),
       //TODO add reviews and rating
-      const Text(
-        '117 reviews',
-        style: TextStyle(
-            fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),
-      ),
+      // const Text(
+      //   '117 reviews',
+      //   style: TextStyle(
+      //       fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),
+      // ),
     ]);
   }
 }

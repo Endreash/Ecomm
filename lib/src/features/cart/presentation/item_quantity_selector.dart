@@ -24,13 +24,13 @@ class _ItemQuantitySelectorState extends State<ItemQuantitySelector> {
     setState(() {});
   }
 
-  double setTotal() {
-    double price = widget.item.price;
-    // double price = 300;
-    // print(price);
-    double total;
-    return total = price * _quantity;
-  }
+  // double setTotal() {
+  //   double price = widget.item.price;
+  //   // double price = 300;
+  //   // print(price);
+  //   double total;
+  //   return total = price * _quantity;
+  // }
 
   @override
   Widget build(BuildContext context) {

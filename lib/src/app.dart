@@ -1,6 +1,6 @@
 import 'package:ecomm/src/routing/app_route.dart';
 // import 'package:ecomm/src/theme/app_theme.dart';
-import 'package:ecomm/src/theme/theme_provider.dart';
+// import 'package:ecomm/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

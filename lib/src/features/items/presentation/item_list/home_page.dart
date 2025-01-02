@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //TODO: remove the items where item quantity is 0
+  
   // Use a [ScrollController] to register a listener that dismisses the
   // on-screen keyboard when the user scrolls.
   // This is needed because this page has a search field that the user can type into.

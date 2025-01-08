@@ -28,14 +28,15 @@ final goRouter = GoRouter(
                 return ItemScreen(itemID: itemId);
               }, routes: [
                   GoRoute(
-                path: 'review',
-                name: AppRoute.leaveReview.name,
-                pageBuilder: (context, state) {
-                  final itemId = state.pathParameters['id']!;
-                  return MaterialPage(child: ReviewScreen(itemId: itemId)); // wont return unless i rap it in un MaterialPage
-                },
-              ),
-              ]
+                    path: 'review',
+                    name: AppRoute.leaveReview.name,
+                    pageBuilder: (context, state) {
+                      final itemId = state.pathParameters['id']!;
+                      return MaterialPage( // wont return unless i rap it in un MaterialPage
+                          child: ReviewScreen(itemId: itemId)); 
+                    },
+                  ),
+                ]
               ),
             GoRoute(
               path: 'cart', // subroutes must not start with '/'

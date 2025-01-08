@@ -6,7 +6,7 @@ import 'package:ecomm/src/features/items/presentation/item_page/add_to_cart.dart
 import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_buttons.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
-import 'package:ecomm/src/features/reviews/presentation/review_screen.dart';
+import 'package:ecomm/src/features/reviews/presentation/review_card.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
@@ -77,7 +77,7 @@ class ItemScreen extends ConsumerWidget {
                       ),
                     ),
                     // TODO Item Reviews List(itemId: itemId),
-                    ReviewScreen(itemId: itemID)
+                    // ReviewCard(itemId: itemID)
                   ],
                 );
         },
@@ -138,7 +138,7 @@ class ItemPage extends StatelessWidget {
                 // Only show average if there is at least one rating
                 // if (product.numRatings >= 1) ...[
                 const RatingAndReview(),
-                ElevatedButton(
+                TextButton(
                   onPressed: () => context.goNamed(
                     AppRoute.leaveReview.name,
                     // pathParameters: {'id':item.id},

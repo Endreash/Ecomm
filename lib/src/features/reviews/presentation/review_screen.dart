@@ -1,7 +1,6 @@
 import 'package:ecomm/src/features/reviews/domain/review.dart';
 import 'package:ecomm/src/features/reviews/presentation/review_rating_bar.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
-import 'package:ecomm/src/widgets/responsive_two_column_layout.dart';
 import 'package:flutter/material.dart';
 
 class ReviewScreen extends StatelessWidget {
@@ -11,23 +10,13 @@ class ReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const review = null; // review == null new review, review != null edit review
-    return 
-    Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        shadowColor: Colors.transparent,
         title: const Text('Leave a review'),
       ),
-      body: 
-      ResponsiveTwoColumnLayout(
-        spacing: 16,
-          breakpoint: 300,
-          startFlex: 3,
-          endFlex: 2,
-          rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
-          rowCrossAxisAlignment: CrossAxisAlignment.center,
-          columnCrossAxisAlignment: CrossAxisAlignment.center,
-          startContent: Text('Purchased on '),
-          endContent:LeaveReviewForm(itemId: itemId, review: review,),
-        )
+      body: ResponsiveCenter(child: LeaveReviewForm(itemId: itemId, review: review,)),
     );
   }
 }
@@ -76,7 +65,8 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -92,19 +82,55 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
               onRatingUpdate: (rating) => setState(() => _rating = rating),
             ),
           ),
+          const SizedBox(height: 8,),
           TextField(
             controller: _controller,
             textCapitalization: TextCapitalization.sentences,
             maxLines: 5,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Your review (optional)',
-              border: OutlineInputBorder(),
+              // border: OutlineInputBorder(),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              filled: true,
+              fillColor: Colors.grey[200],
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20.0, vertical: 16.0),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white, width: 0.0),)
             ),
           ),
-          ElevatedButton(
-            onPressed: _rating == 0 ? null : _submitReview,
-            child: const Text('Submit'),
-          )
+          const SizedBox(height: 16,),
+          // ElevatedButton(
+          //   onPressed: _rating == 0 ? null : _submitReview,
+          //   child: const Text('Submit'),
+          // )
+          GestureDetector(
+          onTap: () => {
+            // ref.read(cartProvider.notifier).add(item),
+            // print('Ehe! Right there.')
+            _rating == 0 ? null : _submitReview
+          },
+          child: Container(
+            height: 64,
+            width: 192,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24), color: const Color.fromRGBO(91, 192, 109, 5)),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  'Submit',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+          ),
+        )
         ],
       ),
     );

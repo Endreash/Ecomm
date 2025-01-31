@@ -34,47 +34,51 @@ class _ItemQuantitySelectorState extends State<ItemQuantitySelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Row(
-        children: [
-          GestureDetector(
-            onTap: () {
-              setQuantity(false);
-              print(_quantity);
-            },
-            child: const Icon(
-              Icons.remove,
-              color: Color.fromARGB(255, 94, 239, 99),
-              size: 36.0,
-            ),
-          ),
-          const SizedBox(
-            width: 12,
-          ),
-          Text(
-            _quantity.toString(),
-          ),
-          // Text('aa'),
-          const SizedBox(
-            width: 12,
-          ),
-          GestureDetector(
-              onTap: () {
-                setQuantity(true);
-                print(_quantity);
+    return Row(
+      children: [
+        // GestureDetector(
+        //   onTap: () {
+        //     setQuantity(false);
+        //     print(_quantity);
+        //   },
+        //   child: const Icon(
+        //     Icons.remove,
+        //     color: Colors.green,
+        //     size: 20.0,
+        //   ),
+        // ),
+        IconButton(
+              icon: const Icon(Icons.remove, color: Colors.green), // Icon
+              onPressed: () => {
+                setQuantity(false)
               },
-              child: const Icon(
-                Icons.add,
-                color: Colors.green,
-                size: 36.0,
-              )),
-          // const SizedBox(width: 64),
-          // Text(
-          //   "${setTotal().toString()} ETB",
-          // )
-        ],
-      ),
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent, 
+              highlightColor: Colors.transparent, 
+            ),
+        const SizedBox(
+          width: 4,
+        ),
+        Text(
+          _quantity.toString(),
+        ),
+        const SizedBox(
+          width: 4,
+        ),
+        IconButton(
+              icon: const Icon(Icons.add, color: Colors.green), // Icon
+              onPressed: () => {
+                setQuantity(true)
+              },
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent, 
+              highlightColor: Colors.transparent, 
+            ),
+        // const SizedBox(width: 64),
+        // Text(
+        //   "${setTotal().toString()} ETB",
+        // )
+      ],
     );
   }
 }

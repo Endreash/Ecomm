@@ -24,6 +24,7 @@ class _SearchItemsState extends State<SearchItems> {
       valueListenable: _controller, 
       builder:(context, value, _) {
         return TextField(
+          // onTapOutside: (event) => hideKeyboard(),
           controller: _controller,
           decoration: InputDecoration(
             hintText: "Search",
@@ -44,5 +45,11 @@ class _SearchItemsState extends State<SearchItems> {
         );
       }
       );
+  }
+}
+
+extension KeyboardUtil on BuildContext{
+  void hideKeyboard() {
+    FocusManager.instance.primaryFocus?.unfocus();
   }
 }

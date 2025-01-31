@@ -1,8 +1,14 @@
+import 'package:ecomm/src/features/reviews/domain/review.dart';
+import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RatingAndReview extends StatelessWidget {
-  const RatingAndReview({super.key});
+  const RatingAndReview({required this.itemId, super.key});
+  // final Review review;
+  final String itemId;
 
+//TODO: get the rating and review dynamically
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -20,6 +26,7 @@ class RatingAndReview extends StatelessWidget {
                 size: 18,
               ),
               Text(
+                // review.score
                 '4.9',
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
               )
@@ -40,18 +47,25 @@ class RatingAndReview extends StatelessWidget {
                 size: 18,
               ),
               Text(
+                // review.score make in percent i guess
                 ' 94%',
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
               )
             ],
           )),
-      const SizedBox(width: 8),
-      //TODO add reviews and rating
-      // const Text(
-      //   '117 reviews',
-      //   style: TextStyle(
-      //       fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),
-      // ),
+      const SizedBox(width: 4),
+      TextButton(
+        onPressed: () => context.goNamed(
+          AppRoute.leaveReview.name,
+          // pathParameters: {'id':item.id},
+          pathParameters: {'id':itemId},
+        ),
+        child : const Text(
+          '117 reviews',
+          style: TextStyle(
+            fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),),
+        
+      ),
     ]);
   }
 }

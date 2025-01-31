@@ -29,7 +29,9 @@ class ItemScreen extends ConsumerWidget {
       // backgroundColor: AppTheme.,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -104,7 +106,7 @@ class ItemPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -137,19 +139,19 @@ class ItemPage extends StatelessWidget {
                 const SizedBox(height: 12),
                 // Only show average if there is at least one rating
                 // if (product.numRatings >= 1) ...[
-                const RatingAndReview(),
-                TextButton(
-                  onPressed: () => context.goNamed(
-                    AppRoute.leaveReview.name,
-                    // pathParameters: {'id':item.id},
-                    pathParameters: {'id':item.id},
-                  ),
-                  child : const Text(
-                    '117 reviews',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),),
+                RatingAndReview(itemId: item.id),
+                // TextButton(
+                //   onPressed: () => context.goNamed(
+                //     AppRoute.leaveReview.name,
+                //     // pathParameters: {'id':item.id},
+                //     pathParameters: {'id':item.id},
+                //   ),
+                //   child : const Text(
+                //     '117 reviews',
+                //     style: TextStyle(
+                //       fontWeight: FontWeight.w500, fontSize: 12, color: Colors.grey),),
                   
-                ),
+                // ),
                 const SizedBox(height: 12),
                 Text(
                   item.description,

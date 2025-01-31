@@ -3,6 +3,7 @@ import 'package:ecomm/src/features/cart/presentation/cart_card.dart';
 import 'package:ecomm/src/features/cart/presentation/promo_code.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:ecomm/src/routing/app_route.dart';
+import 'package:ecomm/src/widgets/docorated_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -58,9 +59,10 @@ class CartPage extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 children: [
-                  Flexible(  
-                    flex: 3,
-                      child: ListView.builder(
+                  Expanded(  
+                    // flex: 3,
+                      child: 
+                      ListView.builder(
                           // itemCount: value.getUserCart().length,
                           itemCount: cart.length,
                           itemBuilder: (context, index) {
@@ -70,16 +72,21 @@ class CartPage extends ConsumerWidget {
                             //return the cart item
                             // return CartItem(individualItem);
                             return CartCard(individualItem);
+
                           })),
-                       const Flexible(flex: 1, child: Padding(
-                         padding: EdgeInsets.all(16.0),
-                         child: Column(
-                           children: [
-                             PromoCode(),
+                      //  const Flexible(flex: 1, child: Padding(
+                      //    padding: EdgeInsets.all(16.0),
+                      //    child: Column(
+                      //      children: [
+                      //        PromoCode(),
                              
-                           ],
-                         ),
-                       ))
+                      //      ],
+                      //    ),
+                      //  ))
+          //             DecoratedBoxWithShadow(
+          //   child: CartTotalWithCTA(ctaBuilder: ctaBuilder),
+          // ),
+
                 ],
               ),
             )

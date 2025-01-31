@@ -75,7 +75,7 @@ class CartCard extends ConsumerWidget {
                             fontSize: 22, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
-                        width: 32,
+                        width: 8,
                       ),
                       ItemQuantitySelector(item)
                     ],

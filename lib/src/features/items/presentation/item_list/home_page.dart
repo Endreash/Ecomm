@@ -47,7 +47,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+
           title: const Text('Discover', style: TextStyle(
             color: Colors.grey
           ),),
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             )),
         
             ResponsiveSliverCenter(
-              // padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(8),
               child: ItemsGrid())
           ]),
         );

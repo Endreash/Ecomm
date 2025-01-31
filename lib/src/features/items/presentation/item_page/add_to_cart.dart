@@ -33,7 +33,7 @@ class AddToCart extends ConsumerWidget {
           height: 64,
           width: 220,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24), color: const Color.fromRGBO(91, 192, 109, 5)),
+              borderRadius: BorderRadius.circular(24), color: Colors.green),
           child: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Center(

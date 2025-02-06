@@ -1,4 +1,5 @@
 import 'package:ecomm/src/features/cart/domain/cart.dart';
+import 'package:ecomm/src/features/cart/services/cart_services.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,11 +23,14 @@ class AddToCart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // final cart = ref.watch(cartProvider);
+    final cartService = ref.read(cartServiceProvider);
     return 
       // TODO: available quantity
       GestureDetector(
         onTap: () => {
-          ref.read(cartProvider.notifier).add(item),
+          // ref.read(cartProvider.notifier).add(item),
+          cartService.addItemToCart(item),
+
           print('Ehe! Right there.')
         },
         child: Container(

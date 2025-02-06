@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecomm/src/features/items/domain/item_model.dart';
 import 'package:riverpod/riverpod.dart';
 // import 'package:uuid/uuid.dart';
@@ -53,6 +55,8 @@ import 'package:riverpod/riverpod.dart';
 
 class CartNotifier extends StateNotifier<List<Item>>{
 
+  final StreamController<Item> _cartStreamController = StreamController<Item>.broadcast();
+
   CartNotifier() : super([
       // Item(
       // id: '1',
@@ -64,6 +68,9 @@ class CartNotifier extends StateNotifier<List<Item>>{
       // description:
       //     'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
       ]);
+
+  // Expose the stream of cart updates
+  Stream<Item> get cartStream => _cartStreamController.stream;
 
   // Update the CartNotifier to correctly add items to the cart
   void add(Item item) {
@@ -77,7 +84,13 @@ class CartNotifier extends StateNotifier<List<Item>>{
   void remove(Item itemId) {
     state = state.where((item) => item.id != itemId.id).toList();
   }
-  
+
+  // Dispose the stream controller when no longer needed
+  @override
+  void dispose() {
+    _cartStreamController.close();
+    super.dispose();
+  }
 }
 
 final cartProvider = StateNotifierProvider<CartNotifier, List<Item>>((ref){

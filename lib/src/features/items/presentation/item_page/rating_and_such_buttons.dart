@@ -1,4 +1,4 @@
-import 'package:ecomm/src/features/reviews/domain/review.dart';
+// import 'package:ecomm/src/features/reviews/domain/review.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +44,7 @@ class RatingAndReview extends StatelessWidget {
               Icon(
                 Icons.thumb_up,
                 color: Colors.green,
-                size: 18,
+                size: 16,
               ),
               Text(
                 // review.score make in percent i guess

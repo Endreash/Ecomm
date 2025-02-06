@@ -21,7 +21,7 @@ class ItemsRepository {
     return Stream.value(_items);
   }
 
-  Stream<Item?> watchItem(String id){
+  Stream<Item> watchItem(String id){
     return watchItemsList().map((items) => items.firstWhere((item) => item.id == id));
   }
 }
@@ -30,4 +30,9 @@ class ItemsRepository {
 // Provider<>... needs type annotation, what type of objects are they
 final itemsRepositoryProvider = Provider<ItemsRepository>((ref) {
   return ItemsRepository(); // returns an instance of ItemsRepository
+});
+
+final itemsListStreamProvider = StreamProvider.autoDispose<List<Item>>((ref){
+  final itemsRepository = ref.watch(itemsRepositoryProvider);
+  return itemsRepository.watchItemsList();
 });

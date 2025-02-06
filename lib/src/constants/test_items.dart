@@ -8,6 +8,7 @@ List<Item> itemShop = [
       rating: '4.9',
       imagePath: 'assets/airpod.png',
       availableQuantity: 5,
+      isOnSale: false,
       description:
           'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
   Item(
@@ -17,9 +18,9 @@ List<Item> itemShop = [
       rating: '5.0',
       imagePath: 'assets/macbook-pro.png',
       availableQuantity: 5,
+      isOnSale: false,
       description:
-          'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.',
-      isOnSale: false),
+          'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.',),
   Item(
       id: '3',
       name: 'iPhone 13 pro max',
@@ -27,6 +28,7 @@ List<Item> itemShop = [
       rating: '4.7',
       imagePath: 'assets/iPhone13.png',
       availableQuantity: 5,
+      isOnSale: true,
       description:
           'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
   Item(
@@ -36,6 +38,7 @@ List<Item> itemShop = [
       rating: '4.7',
       imagePath: 'assets/iPhone13.png',
       availableQuantity: 5,
+      isOnSale: true,
       description:
           'The Microsoft Xbox series X gaming console is capable of impressing with minimal boot times and mesmerising visual effects when playing games at up to 120 frames per second.'),
 ];

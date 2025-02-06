@@ -10,9 +10,10 @@ class Item {
     required this.imagePath,
     required this.description,
     required this.availableQuantity,
-    this.isOnSale,
+    required this.isOnSale,
     // this.avgRating = 0,
     // this.numRatings = 0,
+    this.quantity = 1
   });
   final ItemID id;
   final String name;
@@ -21,7 +22,8 @@ class Item {
   final String imagePath;
   final String description;
   final int availableQuantity;
-  final bool ?isOnSale;
+  final bool isOnSale;
   // final double avgRating;
   // final int numRatings;
+  int quantity;
 }

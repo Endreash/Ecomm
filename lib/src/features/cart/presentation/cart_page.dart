@@ -1,9 +1,6 @@
-import 'package:ecomm/src/features/cart/domain/cart.dart';
 import 'package:ecomm/src/features/cart/presentation/cart_card.dart';
-import 'package:ecomm/src/features/cart/presentation/promo_code.dart';
-import 'package:ecomm/src/features/items/domain/item_model.dart';
+import 'package:ecomm/src/features/cart/services/cart_services.dart';
 import 'package:ecomm/src/routing/app_route.dart';
-import 'package:ecomm/src/widgets/docorated_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +11,10 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    final cart = ref.watch(cartProvider);
+    // final cart = ref.watch(cartProvider);
+    final cartService = ref.read(cartServiceProvider);
+    final cartItems = cartService.getCartItems();
+    final totalCost = cartService.calculateTotalCost();
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -64,10 +64,11 @@ class CartPage extends ConsumerWidget {
                       child: 
                       ListView.builder(
                           // itemCount: value.getUserCart().length,
-                          itemCount: cart.length,
+                          itemCount: cartItems.length,
                           itemBuilder: (context, index) {
                             // get individual item
-                            Item individualItem = cart[index];
+                            // Item individualItem = cart[index];
+                            final individualItem = cartItems[index];
                             // final item = itemShop;
                             //return the cart item
                             // return CartItem(individualItem);
@@ -83,10 +84,29 @@ class CartPage extends ConsumerWidget {
                       //      ],
                       //    ),
                       //  ))
-          //             DecoratedBoxWithShadow(
-          //   child: CartTotalWithCTA(ctaBuilder: ctaBuilder),
-          // ),
-
+                      Divider(thickness: 2, color: Colors.grey[300]),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 64,
+                          // width: 220,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(24), color: Colors.green),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text(
+                                // 'Total: $totalCost',
+                                'Checkout for \$$totalCost',
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                 ],
               ),
             )

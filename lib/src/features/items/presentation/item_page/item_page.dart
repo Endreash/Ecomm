@@ -6,7 +6,7 @@ import 'package:ecomm/src/features/items/presentation/item_page/add_to_cart.dart
 import 'package:ecomm/src/features/items/presentation/item_page/rating_and_such_buttons.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/toogle_buttons.dart';
 import 'package:ecomm/src/features/items/domain/item_model.dart';
-import 'package:ecomm/src/features/reviews/presentation/review_card.dart';
+// import 'package:ecomm/src/features/reviews/presentation/review_card.dart';
 import 'package:ecomm/src/routing/app_route.dart';
 import 'package:ecomm/src/widgets/favorite_button.dart';
 import 'package:ecomm/src/widgets/responsive_center.dart';
@@ -22,7 +22,7 @@ class ItemScreen extends ConsumerWidget {
 // if the the provider value changes
   @override
   Widget build(BuildContext context, WidgetRef ref) { 
-    final cart = ref.watch(cartProvider);
+    // final cart = ref.watch(cartProvider);
     // final item = itemShop.firstWhere((item) => item.id == itemID);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -118,8 +118,7 @@ class ItemPage extends StatelessWidget {
                       style: const TextStyle(
                           fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    //TODO: implement isOnSale
-                    if(item.price > 500) ... { 
+                    if(item.isOnSale) ... { 
                       Container(
                         height: 32,
                         width: 80,

@@ -44,13 +44,16 @@ class ItemCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(item.name,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                              fontSize: 12, 
-                              fontWeight: FontWeight.w400,
-                              color: Colors.grey.shade600
-                              )),
+                      Flexible(
+                        child: Text(item.name,
+                            overflow: TextOverflow.fade,
+                            softWrap: false,
+                            style: TextStyle(
+                                fontSize: 12, 
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey.shade600
+                                )),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -61,6 +64,7 @@ class ItemCard extends StatelessWidget {
                           ),
                           Text(
                             item.rating,
+                            overflow: TextOverflow.fade,
                             style: const TextStyle(
                                 fontWeight: FontWeight.w500, fontSize: 16),
                           )

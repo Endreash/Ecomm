@@ -1,3 +1,4 @@
+import 'package:ecomm/src/features/checkout/checkout_screen.dart';
 import 'package:ecomm/src/features/items/presentation/item_list/home_page.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/item_page.dart';
 import 'package:ecomm/src/features/cart/presentation/cart_page.dart';
@@ -10,6 +11,7 @@ enum AppRoute {
   cart,
   item,
   leaveReview,
+  checkout
 }
 final goRouter = GoRouter(
       initialLocation: '/',
@@ -46,7 +48,16 @@ final goRouter = GoRouter(
                 key: state.pageKey,
                 fullscreenDialog: true,
                 child: const CartPage()
-              )
+              ),
+              routes: [
+                GoRoute(
+                  path: 'checkout',
+                  name: AppRoute.checkout.name,
+                  pageBuilder: (context, state) => const MaterialPage(
+                    fullscreenDialog: true,
+                    child: CheckoutScreen(),
+                ),)
+              ]
             ),
           ],
         ),

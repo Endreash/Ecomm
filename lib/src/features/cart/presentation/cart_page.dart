@@ -85,23 +85,26 @@ class CartPage extends ConsumerWidget {
                       //    ),
                       //  ))
                       Divider(thickness: 2, color: Colors.grey[300]),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 64,
-                          // width: 220,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(24), color: Colors.green),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                              child: Text(
-                                // 'Total: $totalCost',
-                                'Checkout for \$$totalCost',
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w600),
+                      GestureDetector(
+                        onTap: ()=> context.goNamed(AppRoute.checkout.name),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 64,
+                            // width: 220,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24), color: Colors.green),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Text(
+                                  // 'Total: $totalCost',
+                                  'Checkout for \$$totalCost',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
                             ),
                           ),

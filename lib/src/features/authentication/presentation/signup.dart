@@ -217,3 +217,102 @@
 //         ); 
 //   }
 // }
+
+
+
+import 'package:ecomm/src/features/authentication/data/auth_repository.dart';
+import 'package:ecomm/src/routing/app_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+class SignupScreen extends ConsumerWidget {
+  SignupScreen({Key? key}) : super(key: key);
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authRepo = ref.watch(authRepositoryProvider);
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Signup",
+            style: TextStyle(fontSize: 30),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                hintText: 'Enter your name'
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
+                hintText:'Enter your email')
+            ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: passwordController,
+              decoration: const InputDecoration(
+                hintText: 'Enter your password'
+                )
+            ),
+          ),
+          const SizedBox(height: 40),
+          ElevatedButton(
+            onPressed: () async {
+              try {
+                final token = await authRepo.signupUser(emailController.text, passwordController.text);
+                print('Login successful, token: $token');
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Sign up successful!')));
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Sign up failed: $e')),
+              );
+              }
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.green),
+              textStyle: MaterialStateProperty.all(
+                const TextStyle(color: Colors.white),
+              ),
+              minimumSize: MaterialStateProperty.all(
+                Size(MediaQuery.of(context).size.width / 2.5, 50),
+              ),
+            ),
+            child: const Text(
+              "Sign up",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          TextButton(
+            onPressed: () => context.goNamed(AppRoute.login.name),
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const LoginScreen(),
+              //   ),
+              // );
+            child: const Text('Login User?'),
+          ),
+        ],
+      ),
+    );
+  }
+}

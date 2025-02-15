@@ -1,3 +1,5 @@
+import 'package:ecomm/src/features/authentication/presentation/login.dart';
+import 'package:ecomm/src/features/authentication/presentation/signup.dart';
 import 'package:ecomm/src/features/checkout/checkout_screen.dart';
 import 'package:ecomm/src/features/items/presentation/item_list/home_page.dart';
 import 'package:ecomm/src/features/items/presentation/item_page/item_page.dart';
@@ -11,7 +13,10 @@ enum AppRoute {
   cart,
   item,
   leaveReview,
-  checkout
+  checkout,
+  payment,
+  login,
+  signup
 }
 final goRouter = GoRouter(
       initialLocation: '/',
@@ -20,7 +25,8 @@ final goRouter = GoRouter(
         GoRoute(
           path: '/',
           name: AppRoute.home.name,
-          builder: (context, state) => const HomePage(),
+          // builder: (context, state) => const HomePage(),
+          builder: (context, state) => LoginScreen(),
           routes: [
             GoRoute(
               path:'item/:id',

@@ -68,7 +68,7 @@
 //   }
 // }
 
-import 'package:chapasdk/chapasdk.dart';
+// import 'package:chapasdk/chapasdk.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -79,23 +79,23 @@ class CheckoutScreen extends StatelessWidget {
     return SizedBox(
       child: ElevatedButton(
         onPressed: (){
-          Chapa.paymentParameters(
-            context: context,
-  publicKey: 'CHAPUBK_TEST-1OPXyunVVRjoOvMv72NQVZTWy3wAkV7C',
-  currency: 'ETB',
-  amount: '1',
-  email: 'fetanchapa.co',
-  phone: '0911223344',
-  firstName: 'Israel',
-  lastName: 'Goytom',
-  txRef: 'txn_12345',
-  title: 'Order Payment',
-  desc: 'Payment for order #12345',
-  nativeCheckout: true,
-  namedRouteFallBack: '/',
-  showPaymentMethodsOnGridView: true,
-  availablePaymentMethods: ['mpesa', 'cbebirr', 'telebirr', 'ebirr'],
-          );
+          // Chapa.paymentParameters(
+          //   context: context,
+          //   publicKey: 'CHAPUBK_TEST-1OPXyunVVRjoOvMv72NQVZTWy3wAkV7C',
+          //   currency: 'ETB',
+          //   amount: '1',
+          //   email: 'fetanchapa.co',
+          //   phone: '0911223344',
+          //   firstName: 'Israel',
+          //   lastName: 'Goytom',
+          //   txRef: 'txn_12345',
+          //   title: 'Order Payment',
+          //   desc: 'Payment for order #12345',
+          //   nativeCheckout: true,
+          //   namedRouteFallBack: '/',
+          //   showPaymentMethodsOnGridView: true,
+          //   availablePaymentMethods: ['mpesa', 'cbebirr', 'telebirr', 'ebirr'],
+          // );
         }, 
         child: const Text(
                 'Proceed to Pay',
